@@ -31,7 +31,7 @@ And the subject has been broached in major threads about crates.io policies
 * https://internals.rust-lang.org/t/crates-io-incident-2018-10-15/8568
 * https://internals.rust-lang.org/t/pre-rfc-formal-squatting-policy-on-crates-io/11302/20
 
-## Major Pain Points
+## Major Questions
 
 * Referring to namespaced crates in code
 * Referring to namespaced crates in Cargo.toml
@@ -39,3 +39,10 @@ And the subject has been broached in major threads about crates.io policies
 * Can they be nested? Can a crate space use another crate space? 
 * Who controls crate membership in a cratespace / how it's created
   * When a space is created and owned, and a child made, should it inherit the space owners? Then what if the owner changes?
+* Does the entire crate space get a version, or do you select the individual versions of the crates
+  
+## Alternatives
+
+* Just use defacto namespace prefixes (e.g. serde-*)
+* An externally maintained list of packages that work together well
+* Allow for defacto metadata in extra Cargo.toml fields that crev can work with
