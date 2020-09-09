@@ -31,18 +31,26 @@ And the subject has been broached in major threads about crates.io policies
 * https://internals.rust-lang.org/t/crates-io-incident-2018-10-15/8568
 * https://internals.rust-lang.org/t/pre-rfc-formal-squatting-policy-on-crates-io/11302/20
 
-## Major Questions
+## Major Questions and Concerns
 
 * Referring to namespaced crates in code
+ * If we keep the name prefix (very likely?) we'd maybe want (very likely?) a new sigil - would that break macros?
 * Referring to namespaced crates in Cargo.toml
 * Referring to namespaced crates in urls (docs, crates.io and lib.rs)
 * Can they be nested? Can a crate space use another crate space? 
 * Who controls crate membership in a cratespace / how it's created
   * When a space is created and owned, and a child made, should it inherit the space owners? Then what if the owner changes?
 * Does the entire crate space get a version, or do you select the individual versions of the crates
+* How non-namespaced crates become namespaced without breaking back compat?
+* Should users just convert crates into crate namespaces and then use features? Could custom cargo metadata be used for display?
+
+## Other notes
+
+* Technically, package.name and lib.name are actually decoupled but usually the same in practice (CAD97)
   
 ## Alternatives
 
+* Let people make facade crates themselves (good for cohesion, still bad for auditability)
 * Just use defacto namespace prefixes (e.g. serde-*)
 * An externally maintained list of packages that work together well
 * Allow for defacto metadata in extra Cargo.toml fields that crev can work with
